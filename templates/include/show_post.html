@@ -1,0 +1,24 @@
+<section class="section">
+    <div class="section__img">
+        <img src="{{ post.image.url }}" alt="" class="section-img">
+    </div>
+    <div class="section__content">
+        <div class="categories">
+            <ul class="section-categories">
+                <li><a href="#0" class="links links-cat">POST</a></li>
+            </ul>
+        </div>
+        <div class="section-name main-section">
+            <h2><a href="{{ post.slug }}" class="links">
+                    {{ post.title }}
+                </a></h2>
+        </div>
+        <div class="section-info">
+            <span class="section-date">{{ post.date }}</span>
+            <span class="section-autor">{{ post.autor }}</span>
+        </div>
+        <div class="section-description">
+            <p>{{ post.description }}</p>
+        </div>
+    </div>
+</section>

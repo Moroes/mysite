@@ -1,0 +1,27 @@
+<header class="header">
+
+    <nav class="nav">
+
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <span class="visually-hidden-icon">noemi-logo</span>
+                <img src="https://netology-code.github.io/html-2-diploma/sources/images/noemi-logo.svg"
+                    alt="Логотип">
+            </a>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}" class="links nav-link">ГЛАВНАЯ</a></li>
+            <li><a href="{% url 'home' %}" class="links nav-link">ПОСТЫ</a></li>
+            <li><a href="{% url 'home' %}" class="links nav-link">СТАТЬИ</a></li>
+            <li><a href="#0" class="links nav-link">ТЕГИ</a></li>
+            <li><a href="#0" class="links nav-link">ТЕМЫ</a></li>
+            <li><a href="#0" class="links nav-link">КОНТАКТЫ</a></li>
+            <li><a href="{% url 'create_post' %}" class="links nav-link">СОЗДАТЬ ПОСТ</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="title">Я просто хочу пиццы...</h1>
+
+    <div class="header-colormask"></div>
+
+</header>

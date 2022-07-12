@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
 <body>
-    
+
     <header class="header">
         
         <nav class="nav">
@@ -41,9 +41,10 @@
 
     <div class="content">
         <main class="main">
+            {% for movie in movie_list %}
             <section class="section">
                 <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post1.jpg" alt="" class="section-img">
+                    <img src="{{ movie.poster.url }}" alt="" class="section-img">
                 </div>
                 <div class="section__content">
                     <div class="categories">
@@ -53,7 +54,9 @@
                         </ul>
                     </div>
                     <div class="section-name main-section">
-                        <h2><a href="#0" class="links">10 мест, ради которых стоит проснуться на рассвете</a></h2>
+                        <h2><a href="{{ movie.get_absolute_url }}" class="links">
+                            {{ movie.title }}
+                        </a></h2>
                     </div>
                     <div class="section-info">
                         <span class="section-date">10 июня 2019</span>
@@ -65,145 +68,7 @@
                     </div>
                 </div>
             </section>
-            <section class="section">
-                <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post2.jpg" alt="" class="section-img">
-                </div>
-                <div class="section__content">
-                    <div class="categories">
-                        <ul class="section-categories">
-                            <li><a href="#0" class="links links-cat">health</a></li>
-                            <li><a href="#0" class="links links-cat">lifestyle</a></li>
-                        </ul>
-                    </div>
-                    <div class="section-name main-section">
-                        <h2><a href="#0" class="links">ЙОга для начинающих в домашних условиях</a></h2>
-                    </div>
-                    <div class="section-info">
-                        <span class="section-date">10 июня 2019</span>
-                        <span class="section-autor">Неизвестный автор</span>
-                    </div>
-                    <div class="section-description">
-                        <p>Расскажем, какие упражнения выбрать и как сделать коврик для занятий йогой из того, что можно найти в шкафу.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="section">
-                <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post3.jpg" alt="" class="section-img">
-                </div>
-                <div class="section__content">
-                    <div class="categories">
-                        <ul class="section-categories">
-                            <li><a href="#0" class="links links-cat">music</a></li>
-                        </ul>
-                    </div>
-                    <div class="section-name main-section">
-                        <h2><a href="#0" class="links">Лучшие музыкальные фестивали этого лета</a></h2>
-                    </div>
-                    <div class="section-info">
-                        <span class="section-date">10 июня 2019</span>
-                        <span class="section-autor">Неизвестный автор</span>
-                    </div>
-                    <div class="section-description">
-                        <p>Лето на носу, а с ним и музыкальные фестивали. На каком же из них вы разобьёте свою палатку?</p>
-                        <p>Мы составили список лучших летних фестивалей по всему миру.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="section">
-                <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post4.jpg" alt="" class="section-img">
-                </div>
-                <div class="section__content">
-                    <div class="categories">
-                        <ul class="section-categories">
-                            <li><a href="#0" class="links links-cat">LYFESTYLE</a></li>
-                            <li><a href="#0" class="links links-cat">FOOD</a></li>
-                        </ul>
-                    </div>
-                    <div class="section-name main-section">
-                        <h2><a href="#0" class="links">Наукоёмкий подход к кулинарии</a></h2>
-                    </div>
-                    <div class="section-info">
-                        <span class="section-date">10 июня 2019</span>
-                        <span class="section-autor">Неизвестный автор</span>
-                    </div>
-                    <div class="section-description">
-                        <p>Узнаем основы проектирования новых пищевых и около-пищевых опытов, вскроем физику, химию и микробиологию еды.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="section">
-                <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post5.jpg" alt="" class="section-img">
-                </div>
-                <div class="section__content">
-                    <div class="categories">
-                        <ul class="section-categories">
-                            <li><a href="#0" class="links links-cat">LYFESTYLE</a></li>
-                            <li><a href="#0" class="links links-cat">INTERIOR</a></li>
-                            <li><a href="#0" class="links links-cat">ART</a></li>
-                        </ul>
-                    </div>
-                    <div class="section-name main-section">
-                        <h2><a href="#0" class="links">делаем модные принты на подушках для интерьера</a></h2>
-                    </div>
-                    <div class="section-info">
-                        <span class="section-date">10 июня 2019</span>
-                        <span class="section-autor">Неизвестный автор</span>
-                    </div>
-                    <div class="section-description">
-                        <p>Подушки для дивана целесообразнее заказать в съемных чехлах на молнии, если потребуется чистка подушек, проще снять чехлы, чем везти подушку в химчистку.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="section">
-                <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post6.jpg" alt="" class="section-img">
-                </div>
-                <div class="section__content">
-                    <div class="categories">
-                        <ul class="section-categories">
-                            <li><a href="#0" class="links links-cat">Travel</a></li>
-                            <li><a href="#0" class="links links-cat">LYFESTYLE</a></li>
-                        </ul>
-                    </div>
-                    <div class="section-name main-section">
-                        <h2><a href="#0" class="links">Как первый раз отправиться в горы?</a></h2>
-                    </div>
-                    <div class="section-info">
-                        <span class="section-date">10 июня 2019</span>
-                        <span class="section-autor">Неизвестный автор</span>
-                    </div>
-                    <div class="section-description">
-                        <p>Для начала нужно определиться, в каком формате пройдёт ваше путешествие. Это зависит от многих факторов, не только от ваших желаний и интересов.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="section">
-                <div class="section__img">
-                    <img src="https://netology-code.github.io/html-2-diploma/sources/images/last-post4.jpg" alt="" class="section-img">
-                </div>
-                <div class="section__content">
-                    <div class="categories">
-                        <ul class="section-categories">
-                            <li><a href="#0" class="links links-cat">LYFESTYLE</a></li>
-                            <li><a href="#0" class="links links-cat">FOOD</a></li>
-                        </ul>
-                    </div>
-                    <div class="section-name main-section">
-                        <h2><a href="#0" class="links">Наукоёмкий подход к кулинарии</a></h2>
-                    </div>
-                    <div class="section-info">
-                        <span class="section-date">10 июня 2019</span>
-                        <span class="section-autor">Неизвестный автор</span>
-                    </div>
-                    <div class="section-description">
-                        <p>Узнаем основы проектирования новых пищевых и около-пищевых опытов, вскроем физику, химию и микробиологию еды.</p>
-                    </div>
-                </div>
-            </section>
+            {% endfor %}
         </main>
         <aside class="aside">
             <section class="new-posts">
