@@ -1,7 +1,9 @@
 from datetime import date
 from turtle import pos, title
+import django
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
+from django.contrib.auth.views import LoginView
 
 from .models import Person, Post
 from .forms import PostForm
@@ -48,3 +50,10 @@ class CreatePostView(View):
         }
 
         return render(request, "main/create_post.html", data)
+
+
+class MainLoginView(LoginView):
+    # form_class = AuthUserForm
+    def get(self, request):
+        template_name = "main/login.html"
+        return render(request, template_name)

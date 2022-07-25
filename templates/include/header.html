@@ -1,3 +1,4 @@
+{% load account %}
 <header class="header">
 
     <nav class="nav">
@@ -16,7 +17,13 @@
             <li><a href="#0" class="links nav-link">ТЕГИ</a></li>
             <li><a href="#0" class="links nav-link">ТЕМЫ</a></li>
             <li><a href="#0" class="links nav-link">КОНТАКТЫ</a></li>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'create_post' %}" class="links nav-link">СОЗДАТЬ ПОСТ</a></li>
+            <li><span class="nav-link">{{user}}</span><a href="{% url 'account_logout' %}" class="links nav-link"> (выход)</a></li>
+            {% else %}
+            <li><a href="{% url 'account_login' %}" class="links nav-link">вход</a></li>
+            {% endif %}
+
         </ul>
     </nav>
 

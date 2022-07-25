@@ -10,14 +10,13 @@ body {
 }
 
 .header {
-    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     position: relative;
     background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/banner-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 28px  18px 147px 45px;
+    padding: 5%  2% 5% 4%;
     margin-bottom: 64px;
     z-index: 2;
 }
@@ -368,6 +367,10 @@ input:focus {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute;
   }
+
+footer {
+    margin-top: 50px;
+}
 
 @font-face {
     font-family: "OpenSans-Regular"; 

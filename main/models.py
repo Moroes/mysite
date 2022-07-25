@@ -4,6 +4,7 @@ from datetime import date
 from autoslug import AutoSlugField
 
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.models import AbstractUser
 
 class Person(models.Model):
     first_name = models.CharField("Имя", max_length=30)
@@ -27,3 +28,5 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
