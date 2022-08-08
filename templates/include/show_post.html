@@ -5,13 +5,21 @@
     <div class="section__content">
         <div class="categories">
             <ul class="section-categories">
-                <li><a href="#0" class="links links-cat">POST</a></li>
+            {% for tag in post.tags.all %}
+                <li><a href="{{ tag.get_absolute_url }}" class="links links-cat">{{ tag }}</a></li>
+            {% endfor %}
             </ul>
         </div>
-        <div class="section-name main-section">
-            <h2><a href="{{ post.slug }}" class="links">
-                    {{ post.title }}
-                </a></h2>
+        <div class="section-container">
+            <div class="section-name main-section">
+                <h2><a href="{{ post.slug }}" class="links">
+                        {{ post.title }}
+                    </a></h2>
+            </div>
+            <!-- <div class="section-edit">
+                <button>редактировать</button>
+                <button>удалить</button>
+            </div> -->
         </div>
         <div class="section-info">
             <span class="section-date">{{ post.date }}</span>

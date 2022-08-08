@@ -1,0 +1,7 @@
+{% extends "main/base.html" %}
+
+{% block posts %}
+    {% for post in posts %}
+        {% include 'include/show_post.html' %}
+    {% endfor %}
+{% endblock posts %}

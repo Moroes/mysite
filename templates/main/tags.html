@@ -1,0 +1,7 @@
+{% extends "main/base.html" %}
+
+{% block posts %}
+    {% for tag in tags %}
+        <a href="{{ tag.get_absolute_url }}" style="text-decoration: none; color: black;"><li class="tag">{{ tag }}</li></a>
+    {% endfor %}
+{% endblock posts %}

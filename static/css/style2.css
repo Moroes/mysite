@@ -10,14 +10,13 @@ body {
 }
 
 .header {
-    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     position: relative;
     background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/banner-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 28px  18px 147px 45px;
+    padding: 5%  2% 5% 4%;
     margin-bottom: 64px;
     z-index: 2;
 }
@@ -88,7 +87,6 @@ body {
 }
 
 .section-name {
-    display: inline-block;
     width: 100%;
     text-align: center;
     color: #0f0d0e;
@@ -109,8 +107,22 @@ body {
 
 .section-img {
     margin-right: 30px;
-    max-width: 300px;
+    width: 300px;
     max-height: 300px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-edit {
+    display: flex;
+    padding: 5%
+}
+
+.section-edit > button {
+    box-sizing: content-box;
 }
 
 .categories > ul > li {
@@ -152,6 +164,10 @@ body {
 .main-section {
     text-align: left;
     margin-bottom: 38px;
+}
+
+.section-box {
+    width: 100%;
 }
 
 .section-line {
@@ -368,6 +384,10 @@ input:focus {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute;
   }
+
+footer {
+    margin-top: 50px;
+}
 
 @font-face {
     font-family: "OpenSans-Regular"; 

@@ -85,16 +85,13 @@
             </section>
             <section class="tags">
                 <p class="section-name">теги</p>
-                <div class="section-line"></div>
+                <div class="section-box">
+                    <div class="section-line"></div>
+                </div>
                 <ul>
-                    <li class="tag">fashion</li>
-                    <li class="tag">music</li>
-                    <li class="tag">lifestyle</li>
-                    <li class="tag">art</li>
-                    <li class="tag">inertion</li>
-                    <li class="tag">travel</li>
-                    <li class="tag">food</li>
-                    <li class="tag">health</li>
+                    {% for tag in tags %}
+                        <a href="{{ tag.get_absolute_url }}" style="text-decoration: none; color: black;"><li class="tag">{{ tag }}</li></a>
+                    {% endfor %}
                 </ul>
             </section>
             <section class="topics">
