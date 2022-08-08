@@ -87,7 +87,6 @@ body {
 }
 
 .section-name {
-    display: inline-block;
     width: 100%;
     text-align: center;
     color: #0f0d0e;
@@ -108,8 +107,22 @@ body {
 
 .section-img {
     margin-right: 30px;
-    max-width: 300px;
+    width: 300px;
     max-height: 300px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-edit {
+    display: flex;
+    padding: 5%
+}
+
+.section-edit > button {
+    box-sizing: content-box;
 }
 
 .categories > ul > li {
@@ -151,6 +164,10 @@ body {
 .main-section {
     text-align: left;
     margin-bottom: 38px;
+}
+
+.section-box {
+    width: 100%;
 }
 
 .section-line {

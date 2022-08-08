@@ -1,10 +1,8 @@
-from statistics import mode
 from django.db import models
-from datetime import date
 from autoslug import AutoSlugField
 
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.models import AbstractUser
+from taggit.managers import TaggableManager
 
 class Person(models.Model):
     first_name = models.CharField("Имя", max_length=30)
@@ -17,16 +15,15 @@ class Person(models.Model):
 
 class Post(models.Model):
     title = models.CharField("Название", max_length=150)
-    autor = models.ForeignKey(Person, on_delete=models.CASCADE)
+    autor = models.CharField("Автор", blank=True, max_length=50)
     image = models.ImageField("Изображение", upload_to="images/")
     description = models.TextField("Описанеие")
-    date = models.DateField(
+    date = models.DateTimeField(
         "Дата добавления", auto_now_add=True, db_index=True)
+    tags = TaggableManager()
     slug = AutoSlugField(populate_from='title', unique=True, db_index=True)
     def get_absolute_url(self):
         return reverse("post_detail", args=(self.slug, ))
 
     def __str__(self) -> str:
         return self.title
-
-

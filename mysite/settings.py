@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'taggit',
 ]
 
 # AUTH_USER_MODEL = "main.User"

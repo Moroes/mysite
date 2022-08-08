@@ -1,9 +1,7 @@
-from datetime import date
-from turtle import pos, title
-import django
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
-from django.contrib.auth.views import LoginView
+from django.contrib.auth import get_user
+from taggit.models import Tag
 
 from .models import Person, Post
 from .forms import PostForm
@@ -15,14 +13,17 @@ class PostsView(View):
     """Список постов"""
 
     def get(self, request):
-        return render(request, "main/index.html", {"posts": Post.objects.all()})
+        context = {
+            "posts": Post.objects.all().order_by('-date'),
+            "tags": Tag.objects.all()
+        }
+        return render(request, "main/index.html", context)
 
 
 class PostDetailView(View):
     """Страница с постом"""
 
     def get(self, request, post_slug):
-        print(get_object_or_404(Post, slug=post_slug))
         return render(request, "main/post_detail.html", {'post': get_object_or_404(Post, slug=post_slug)})
 
 
@@ -39,7 +40,10 @@ class CreatePostView(View):
         if request.method == "POST":  # проверяем то что метод именно POST
             form = PostForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
+                new_post = form.save(commit=False)
+                # Добавление имени пользователя
+                new_post.autor = get_user(request)
+                new_post.save()
                 return redirect("index.html")
             else:
                 error = "Неверные данные формы!"
@@ -52,8 +56,24 @@ class CreatePostView(View):
         return render(request, "main/create_post.html", data)
 
 
-class MainLoginView(LoginView):
-    # form_class = AuthUserForm
+class TagView(View):
+    """Теги"""
+
+    def get(self, request, tag_slug):
+        tags = Tag.objects.filter(slug=tag_slug).values_list('name', flat=True)
+        posts = Post.objects.filter(tags__name__in=tags)
+        context = {
+            'posts': posts,
+        }
+        return render(request, "main/show_tag.html", context)
+
+
+class TagsView(View):
+    """Теги"""
+
     def get(self, request):
-        template_name = "main/login.html"
-        return render(request, template_name)
+        tags = Tag.objects.all()
+        context = {
+            'tags': tags,
+        }
+        return render(request, "main/tags.html", context)

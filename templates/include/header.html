@@ -14,9 +14,9 @@
             <li><a href="{% url 'home' %}" class="links nav-link">ГЛАВНАЯ</a></li>
             <li><a href="{% url 'home' %}" class="links nav-link">ПОСТЫ</a></li>
             <li><a href="{% url 'home' %}" class="links nav-link">СТАТЬИ</a></li>
-            <li><a href="#0" class="links nav-link">ТЕГИ</a></li>
+            <li><a href="{% url 'tags' %}" class="links nav-link">ТЕГИ</a></li>
             <li><a href="#0" class="links nav-link">ТЕМЫ</a></li>
-            <li><a href="#0" class="links nav-link">КОНТАКТЫ</a></li>
+            <li><a href="#footer" class="links nav-link">КОНТАКТЫ</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'create_post' %}" class="links nav-link">СОЗДАТЬ ПОСТ</a></li>
             <li><span class="nav-link">{{user}}</span><a href="{% url 'account_logout' %}" class="links nav-link"> (выход)</a></li>
