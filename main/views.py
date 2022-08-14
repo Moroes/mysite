@@ -1,3 +1,5 @@
+from os import remove
+from pathlib import Path
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 from django.contrib.auth import get_user
@@ -7,6 +9,7 @@ from .models import Person, Post
 from .forms import PostForm
 
 # Create your views here.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 class PostsView(View):
@@ -27,6 +30,15 @@ class PostDetailView(View):
         return render(request, "main/post_detail.html", {'post': get_object_or_404(Post, slug=post_slug)})
 
 
+def delete_post(request, post):
+    post = Post.objects.get(slug=post)
+    remove(f"media/{post.image}")
+    post.delete()
+    return redirect('home')
+
+        
+
+
 class CreatePostView(View):
     """Создание поста"""
 
@@ -45,6 +57,29 @@ class CreatePostView(View):
                 new_post.autor = get_user(request)
                 new_post.save()
                 return redirect("index.html")
+            else:
+                error = "Неверные данные формы!"
+
+        data = {
+            'post_form': post_form,
+            'error': error,
+        }
+
+        return render(request, "main/create_post.html", data)
+
+    def edit(request, post_title=''):
+        post = get_object_or_404(Post, title=post_title)
+        post_form = PostForm(instance=post)
+        error = ""
+
+        if request.method == "POST":  # проверяем то что метод именно POST
+            form = PostForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                new_post = form.save(commit=False)
+                # Добавление имени пользователя
+                new_post.slug = request.POST["title"]
+                new_post.save()
+                return redirect("../")
             else:
                 error = "Неверные данные формы!"
 

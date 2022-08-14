@@ -7,6 +7,6 @@ from .models import Post, Person
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields= ['autor', 'title', 'image', 'description']
-        widgets = {'autor': forms.HiddenInput()}
+        fields= ['autor', 'title', 'image', 'description', 'slug']
+        widgets = {'autor': forms.HiddenInput(), 'slug': forms.HiddenInput()}
 
