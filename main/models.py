@@ -21,7 +21,7 @@ class Post(models.Model):
     date = models.DateTimeField(
         "Дата добавления", auto_now_add=True, db_index=True)
     tags = TaggableManager()
-    slug = AutoSlugField(populate_from='title', unique=True, db_index=True)
+    slug = AutoSlugField(populate_from='title', unique=True, db_index=True, editable=True)
     def get_absolute_url(self):
         return reverse("post_detail", args=(self.slug, ))
 
