@@ -51,6 +51,7 @@ class CreatePostView(View):
 
         if request.method == "POST":  # проверяем то что метод именно POST
             form = PostForm(request.POST, request.FILES)
+            print(form)
             if form.is_valid():
                 new_post = form.save(commit=False)
                 # Добавление имени пользователя
