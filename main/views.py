@@ -8,7 +8,6 @@ from taggit.models import Tag
 from .models import Person, Post
 from .forms import PostForm
 
-# Create your views here.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -35,8 +34,6 @@ def delete_post(request, post):
     remove(f"media/{post.image}")
     post.delete()
     return redirect('home')
-
-        
 
 
 class CreatePostView(View):
