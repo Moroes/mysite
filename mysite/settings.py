@@ -1,6 +1,4 @@
 from pathlib import Path
-import os
-from telnetlib import AUTHENTICATION
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,7 +15,34 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'taggit',
+    'debug_toolbar',
 ]
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = 'django-insecure-ku+vf+@17cfl&e+!nwlnkrge+kpyn=88888'
+
+ALLOWED_HOSTS = ["127.0.0.1", "158.160.5.122"]
+
+DEBUG = True
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'main',
+        'USER': 'postgres',
+        'PASSWORD': 'asdhfgjk23821',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 
 # AUTH_USER_MODEL = "main.User"
 
@@ -38,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -77,9 +103,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
+if DEBUG:
+    import socket  # only if you haven't already imported this
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
 
 LANGUAGE_CODE = 'ru'
 
@@ -93,21 +126,7 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = '/static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    from .prod_settings import *

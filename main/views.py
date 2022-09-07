@@ -1,15 +1,11 @@
 from os import remove
-from pathlib import Path
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 from django.contrib.auth import get_user
 from taggit.models import Tag
 
-from .models import Person, Post
+from .models import Post
 from .forms import PostForm
-
-# Create your views here.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 class PostsView(View):
@@ -36,10 +32,8 @@ def delete_post(request, post):
     post.delete()
     return redirect('home')
 
-        
 
-
-class CreatePostView(View):
+class CRUD_PostView(View):
     """Создание поста"""
 
     def get(self, request):
@@ -51,6 +45,7 @@ class CreatePostView(View):
 
         if request.method == "POST":  # проверяем то что метод именно POST
             form = PostForm(request.POST, request.FILES)
+            print(form)
             if form.is_valid():
                 new_post = form.save(commit=False)
                 # Добавление имени пользователя
@@ -69,6 +64,7 @@ class CreatePostView(View):
 
     def edit(request, post_title=''):
         post = get_object_or_404(Post, title=post_title)
+        # Заполнение формы изменяемым постом
         post_form = PostForm(instance=post)
         error = ""
 
@@ -76,7 +72,7 @@ class CreatePostView(View):
             form = PostForm(request.POST, request.FILES, instance=post)
             if form.is_valid():
                 new_post = form.save(commit=False)
-                # Добавление имени пользователя
+                # Изменение слага
                 new_post.slug = request.POST["title"]
                 new_post.save()
                 return redirect("../")

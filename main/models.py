@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from autoslug import AutoSlugField
 
@@ -20,8 +21,8 @@ class Post(models.Model):
     description = models.TextField("Описанеие")
     date = models.DateTimeField(
         "Дата добавления", auto_now_add=True, db_index=True)
-    tags = TaggableManager()
-    slug = AutoSlugField(populate_from='title', unique=True, db_index=True, editable=True)
+    tags = TaggableManager(blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, db_index=True, editable=True, default='', blank=True)
     def get_absolute_url(self):
         return reverse("post_detail", args=(self.slug, ))
 

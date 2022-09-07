@@ -1,12 +1,17 @@
 from cProfile import label
 from django import forms
 
-from .models import Post, Person
+from .models import Post
+from taggit.models import Tag
 
 
 class PostForm(forms.ModelForm):
+
+
     class Meta:
         model = Post
-        fields= ['autor', 'title', 'image', 'description', 'slug']
+        fields= '__all__'
         widgets = {'autor': forms.HiddenInput(), 'slug': forms.HiddenInput()}
+
+    # tags = forms.ModelChoiceField(queryset=Tag.objects.all())
 
