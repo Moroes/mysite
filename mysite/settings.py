@@ -17,22 +17,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'taggit',
-
-     'debug_toolbar',
+    'debug_toolbar',
 ]
 
-# AUTH_USER_MODEL = "main.User"
+DEBUG = True
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'main',
-        'USER': 'postgres',
-        'PASSWORD': 'asdhfgjk23821',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# AUTH_USER_MODEL = "main.User"
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -52,7 +42,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -92,8 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-DEBUG = True
-
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
@@ -120,9 +107,13 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -134,32 +125,3 @@ try:
     from .local_settings import *
 except ImportError:
     from .prod_settings import *
-
-
-#######
-from pathlib import Path
-import os
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = 'django-insecure-ku+vf+@17cfl&e+!nwlnkrge+kpyn=88888'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'main',
-        'USER': 'postgres',
-        'PASSWORD': 'asdhfgjk23821',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
