@@ -67,14 +67,14 @@ class CreatePostView(View):
 
     def edit(request, post_title=''):
         post = get_object_or_404(Post, title=post_title)
-        post_form = PostForm(instance=post)
+        post_form = PostForm(instance=post) # Заполнение формы изменяемым постом
         error = ""
 
         if request.method == "POST":  # проверяем то что метод именно POST
             form = PostForm(request.POST, request.FILES, instance=post)
             if form.is_valid():
                 new_post = form.save(commit=False)
-                # Добавление имени пользователя
+                # Изменение слага
                 new_post.slug = request.POST["title"]
                 new_post.save()
                 return redirect("../")
