@@ -16,6 +16,7 @@ INSTALLED_APPS = [
 
     'taggit',
     'debug_toolbar',
+    'rest_framework',
 ]
 
 BASE_DIR = Path(__file__).resolve().parent.parent

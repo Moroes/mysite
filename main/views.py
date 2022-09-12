@@ -26,11 +26,7 @@ class PostDetailView(View):
         return render(request, "main/post_detail.html", {'post': get_object_or_404(Post, slug=post_slug)})
 
 
-def delete_post(request, post):
-    post = Post.objects.get(slug=post)
-    remove(f"media/{post.image}")
-    post.delete()
-    return redirect('home')
+
 
 
 class CRUD_PostView(View):
@@ -85,6 +81,12 @@ class CRUD_PostView(View):
         }
 
         return render(request, "main/create_post.html", data)
+
+    def delete(request, post):
+        post = Post.objects.get(slug=post)
+        remove(f"media/{post.image}")
+        post.delete()
+        return redirect('home')
 
 
 class TagView(View):

@@ -13,6 +13,6 @@ urlpatterns = [
     path("<slug:post_slug>", views.PostDetailView.as_view(), name='post_detail'),
     path("tags/<tag_slug>", views.TagView.as_view(), name='tag'),
     path("tags/", views.TagsView.as_view(), name='tags'),
-    path("<post>/delete", views.delete_post, name='delete_post'),
+    path("<post>/delete", views.CRUD_PostView.delete, name='delete_post'),
     path("<post_title>/edit", views.CRUD_PostView.edit, name='edit_post'),
 ]
