@@ -47,7 +47,7 @@ class CRUD_PostView(View):
                 # Добавление имени пользователя
                 new_post.autor = get_user(request)
                 new_post.save()
-                return redirect("index.html")
+                return redirect("home")
             else:
                 error = "Неверные данные формы!"
 
