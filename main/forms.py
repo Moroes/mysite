@@ -11,7 +11,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields= '__all__'
-        widgets = {'autor': forms.HiddenInput(), 'slug': forms.HiddenInput()}
+        widgets = {'autor': forms.HiddenInput(), 'slug': forms.HiddenInput(), 
+        'description': forms.TextInput(attrs={"class":"input"}), 'title': forms.TextInput(attrs={"class":"input"}), 
+        'tags': forms.TextInput(attrs={"class":"input"})}
 
     # tags = forms.ModelChoiceField(queryset=Tag.objects.all())
 

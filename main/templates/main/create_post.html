@@ -7,12 +7,13 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/post_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/create_post.css' %}">
 {% endblock head %}
 
 
 {% block content %}
 <div class="testbox">
-    <form method="post" enctype='multipart/form-data'>
+    <form method="post" enctype='multipart/form-data' class="create-form">
         {% csrf_token %}
         <div class="banner">
             <h1>Создание поста</h1>
