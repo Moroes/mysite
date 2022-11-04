@@ -36,6 +36,7 @@ class CRUD_PostView(View):
         return render(request, "main/create_post.html")
 
     def create(request):
+        print(tuple(Tag.objects.all().values_list('name'))[0])
         post_form = PostForm()
         error = ""
 
