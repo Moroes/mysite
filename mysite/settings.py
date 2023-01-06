@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'taggit',
+    'taggit_labels',
     'debug_toolbar',
     'rest_framework',
 ]
