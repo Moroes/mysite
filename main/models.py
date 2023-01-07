@@ -5,6 +5,7 @@ from autoslug import AutoSlugField
 from django.urls import reverse, reverse_lazy
 from taggit.managers import TaggableManager
 
+
 class Person(models.Model):
     first_name = models.CharField("Имя", max_length=30)
     last_name = models.CharField("Фамилия", max_length=30)
@@ -22,7 +23,9 @@ class Post(models.Model):
     date = models.DateTimeField(
         "Дата добавления", auto_now_add=True, db_index=True)
     tags = TaggableManager(blank=True)
-    slug = AutoSlugField(populate_from='title', unique=True, db_index=True, editable=True, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True,
+                         db_index=True, editable=True, blank=True)
+
     def get_absolute_url(self):
         return reverse("post_detail", args=(self.slug, ))
 

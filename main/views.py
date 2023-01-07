@@ -26,9 +26,6 @@ class PostDetailView(View):
         return render(request, "main/post_detail.html", {'post': get_object_or_404(Post, slug=post_slug)})
 
 
-
-
-
 class CRUD_PostView(View):
     """Создание поста"""
 
