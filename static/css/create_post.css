@@ -45,7 +45,13 @@
     text-align: center;
 }
 
+.description {
+  width: 100%;
+}
 
+.image {
+  width: 100%;
+}
 
 .input:invalid:focus,
 .input:invalid:focus {
