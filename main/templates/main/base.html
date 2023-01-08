@@ -70,19 +70,7 @@
             <section class="mailing-list">
                 <p class="section-name">рассылка</p>
                 <div class="section-line"></div>
-                <!-- <form action="#" class="subscription-form">
-                    <div class="sub">
-                        <label>
-                            <span class="visually-hidden-field">Поле ввода e-mail для подписки</span>
-                            <input type="text" class="subscription-input" placeholder="Ваш email-адрес">
-                        </label>
-                        <label>
-                            <span class="visually-hidden-field">Кнопка подписки</span>
-                            <button class="subscription-button" type="submit">подписаться</button>
-                        </label>
-                    </div>
-                </form> -->
-                <form method="post" enctype='multipart/form-data' class="create-form">
+                <form method="post" enctype='multipart/form-data' class="subscription-form">
                     {% csrf_token %}
                     {{ mail_form }}
                     <button class="subscription-button" type="submit">подписаться</button>
