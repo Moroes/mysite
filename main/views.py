@@ -5,7 +5,7 @@ from django.contrib.auth import get_user
 from taggit.models import Tag
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, SendMailForm
 
 
 class PostsView(View):
@@ -14,7 +14,8 @@ class PostsView(View):
     def get(self, request):
         context = {
             "posts": Post.objects.all().order_by('-date'),
-            "tags": Tag.objects.all()
+            "tags": Tag.objects.all(),
+            "mail_form": SendMailForm()
         }
         return render(request, "main/index.html", context)
 
