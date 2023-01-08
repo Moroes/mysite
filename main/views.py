@@ -15,7 +15,7 @@ class PostsView(View):
         context = {
             "posts": Post.objects.all().order_by('-date'),
             "tags": Tag.objects.all(),
-            "mail_form": SendMailForm()
+            "mail_form": SendMailForm(),
         }
         return render(request, "main/index.html", context)
 
