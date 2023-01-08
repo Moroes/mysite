@@ -20,4 +20,5 @@ class SendMailForm(forms.ModelForm):
 
     class Meta:
         model = Mail
-        fields = ('mail',)
+        fields = '__all__'
+        widgets = {'mail': forms.EmailInput(attrs={"class": "subscription-input"})}
