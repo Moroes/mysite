@@ -14,4 +14,5 @@ urlpatterns = [
     path("tags/", views.TagsView.as_view(), name='tags'),
     path("<post>/delete", views.CRUD_PostView.delete, name='delete_post'),
     path("<post_title>/edit", views.CRUD_PostView.edit, name='edit_post'),
+    path("create_mail/", views.CreateMail.create, name="create_mail")
 ]

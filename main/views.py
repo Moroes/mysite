@@ -108,3 +108,20 @@ class TagsView(View):
             'tags': tags,
         }
         return render(request, "main/tags.html", context)
+
+class CreateMail(View):
+    """Создание почты"""
+
+    def create(request):
+        if request.method == "POST":
+            form = SendMailForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect("home")
+        
+        context = {
+            "posts": Post.objects.all().order_by('-date'),
+            "tags": Tag.objects.all(),
+            "mail_form": SendMailForm(),
+        }
+        return render(request, "main/index.html", context)

@@ -70,7 +70,7 @@
             <section class="mailing-list">
                 <p class="section-name">рассылка</p>
                 <div class="section-line"></div>
-                <form method="post" enctype='multipart/form-data' class="subscription-form">
+                <form action="create_mail/" method="post" enctype='multipart/form-data' class="subscription-form">
                     {% csrf_token %}
                     {{ mail_form }}
                     <button class="subscription-button" type="submit">подписаться</button>
