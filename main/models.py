@@ -35,3 +35,6 @@ class Post(models.Model):
 
 class Mail(models.Model):
     mail = models.EmailField("Почта", unique=True)
+
+    def __str__(self) -> str:
+        return self.mail

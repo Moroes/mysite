@@ -49,6 +49,13 @@ STATICFILES_DIRS = [
 
 # AUTH_USER_MODEL = "main.User"
 
+#smtp
+EMAIL_USE_TLS = True
+EMAIL_HOSTS = 'smtp.gmail.com'
+EMAIL_HOSTS_USER = 'mysite.moroes@gmail.com'
+EMAIL_HOSTS_PASSWORD = 'asdhfgjk23821'
+EMAIL_PORT = 587
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     # 'allauth.account.auth_backends.AutenticationBackend',

@@ -1,8 +1,11 @@
 from os import remove
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
+from django.views.generic import CreateView
 from django.contrib.auth import get_user
 from taggit.models import Tag
+from .models import *
+from .service import *
 
 from .models import Post
 from .forms import PostForm, SendMailForm
@@ -109,19 +112,15 @@ class TagsView(View):
         }
         return render(request, "main/tags.html", context)
 
-class CreateMail(View):
+class CreateMail(CreateView):
     """Создание почты"""
 
-    def create(request):
-        if request.method == "POST":
-            form = SendMailForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect("home")
-        
-        context = {
-            "posts": Post.objects.all().order_by('-date'),
-            "tags": Tag.objects.all(),
-            "mail_form": SendMailForm(),
-        }
-        return render(request, "main/index.html", context)
+    model = Mail
+    form_class = SendMailForm
+    success_url = '/'
+    template_name = 'main/index.html'
+
+    def form_valid(self, form):
+        form.save()
+        send(form.instance.mail)
+        return super().form_valid(form)
