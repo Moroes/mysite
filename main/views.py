@@ -2,10 +2,13 @@ from os import remove
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 from django.views.generic import CreateView
+from django.core.mail import send_mail
+from django.conf import settings
 from django.contrib.auth import get_user
 from taggit.models import Tag
 from .models import *
 from .service import *
+
 
 from .models import Post
 from .forms import PostForm, SendMailForm
@@ -122,5 +125,6 @@ class CreateMail(CreateView):
 
     def form_valid(self, form):
         form.save()
-        send(form.instance.mail)
+        print(send_mail('Заголовок', 'message', settings.EMAIL_HOST_USER, [form.instance.mail]))
+        #send(form.instance.mail)
         return super().form_valid(form)

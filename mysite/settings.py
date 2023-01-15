@@ -50,11 +50,15 @@ STATICFILES_DIRS = [
 # AUTH_USER_MODEL = "main.User"
 
 #smtp
-EMAIL_USE_TLS = True
-EMAIL_HOSTS = 'smtp.gmail.com'
-EMAIL_HOSTS_USER = 'mysite.moroes@gmail.com'
-EMAIL_HOSTS_PASSWORD = 'asdhfgjk23821'
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'alyoshinmihail1@yandex.ru'
+EMAIL_HOST_PASSWORD = 'nhwtklqyckvbbrqk'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = 'alyoshinmihail1@yandex.ru'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

@@ -1,11 +1,12 @@
 from django.core.mail import send_mail
+from django.conf import settings
 
 
 def send(user_email):
-    send_mail(
-        'Приветствуем Вас на нашем сайте.',
-        'Тут будет описание',
-        'mysite.moroes@gmail.com',
+    print(send_mail(
+        'asdss',
+        '21sscs',
+        settings.EMAIL_HOST_USER,
         [user_email],
-        fail_silently=False,
-    )
+        fail_silently=True,
+    ))
